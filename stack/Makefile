@@ -1,6 +1,6 @@
 CC = g++
 CFLAG = -Wall -g
-TARGET = stack
+TARGET = ds_stack
 RESULT = output
 
 all: main.o $(TARGET).o
