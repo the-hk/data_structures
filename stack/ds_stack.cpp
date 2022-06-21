@@ -11,24 +11,28 @@ ds_stack::~ds_stack()
     std::cout << "bye bye :)"<<std::endl;
 }
 
-int ds_stack::pop(ds_stackStruct *data)
+ds_stackStruct ds_stack::pop(ds_stackStruct *data)
 {
-    if( (this->ds_stackFulness + 2) > (this->ds_stack_size) )
+    *data = this->ds_stackPointer[ds_stackCounter];    
+    this->ds_stackCounter--;
+    if( (this->ds_stackCounter + 2) < (this->ds_stack_size) )
     {
-        /* increase the ds_stack size*/
+        /* decrease the ds_stack size*/
+        this->resizeds_stack(decrease);
+    }
 
-    }
-    else
-    {
-        this->ds_stackFulness++;
-        this->ds_stackPointer[ds_stackFulness] = *data;
-    }
-    return 1;
 }
 
 int ds_stack::push(ds_stackStruct *data)
 {
+    this->ds_stackPointer[ds_stackCounter] = *data;
+    this->ds_stackCounter++;
 
+    if( (this->ds_stackCounter + 2) > (this->ds_stack_size) )
+    {
+        /* increase the ds_stack size*/
+        this->resizeds_stack(increase);
+    }
 }
 
 int ds_stack::get_ds_stackSize()
@@ -38,7 +42,12 @@ int ds_stack::get_ds_stackSize()
 
 void ds_stack::printds_stack()
 {
-
+    for(int i = 0; i<ds_stackCounter; i++)
+    {
+        std::cout<<this->ds_stackPointer[i].val<<std::endl;
+    }
+    std::cout<<"stack_counter = "<<this->ds_stackCounter<<std::endl;
+    std::cout<<"stack_size = "<<this->ds_stack_size<<std::endl;
 }
 
 int ds_stack::resizeds_stack(int ds_stackDirection)
@@ -47,13 +56,23 @@ int ds_stack::resizeds_stack(int ds_stackDirection)
     {
         std::cout << "i am in increase"<<std::endl;
         /* 1: create a new array with increased size */
-        ds_stackStruct *tempArr = new ds_stackStruct[this->ds_stack_size + 4]; 
+        this->ds_stack_size = this->ds_stack_size + stack_size_inc_dec;
+        ds_stackStruct *tempArr = new ds_stackStruct[this->ds_stack_size]; 
         /* 2: copy old array to new array */
         std::copy(ds_stackPointer,ds_stackPointer+ds_stack_size,tempArr);
+        delete[] ds_stackPointer;
+        ds_stackPointer = tempArr;
     }
     else if(ds_stackDirection == decrease)
     {
         std::cout << "i am in decrease"<<std::endl;
-
+        /* 1: create a new array with increased size */
+        this->ds_stack_size = this->ds_stack_size - stack_size_inc_dec;
+        ds_stackStruct *tempArr = new ds_stackStruct[this->ds_stack_size]; 
+        /* 2: copy old array to new array */
+        std::copy(ds_stackPointer,ds_stackPointer+ds_stack_size,tempArr);
+        delete[] ds_stackPointer;
+        ds_stackPointer = tempArr;
     }
+    return 1;
 }

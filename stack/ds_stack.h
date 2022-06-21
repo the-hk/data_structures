@@ -18,14 +18,15 @@ class ds_stack{
     public:
     ds_stack();
     ~ds_stack();
-    int pop(ds_stackStruct *data);
+    ds_stackStruct pop(ds_stackStruct *data);
     int push(ds_stackStruct *data);
     int get_ds_stackSize();
     void printds_stack();
     
     private:
-    int ds_stackFulness = NULL;
+    int stack_size_inc_dec = 4;
+    int ds_stackCounter = 0;
     ds_stackStruct *ds_stackPointer = nullptr;
-    int ds_stack_size = 1;
+    int ds_stack_size = 2;
     int resizeds_stack(int ds_stackDirection);
 };
