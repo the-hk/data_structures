@@ -3,22 +3,26 @@
 ds_hashTable::ds_hashTable()
 {
     std::cout<<"Hello!"<<std::endl;
+    hash_data *storage_array = new hash_data[this->prvt_size];
+    this->prvt_data = storage_array;
 }
 
 
 ds_hashTable::~ds_hashTable()
 {
     std::cout<<"bye bye :)"<<std::endl;
+    delete[] (this->prvt_data);
 }
 
 
 int ds_hashTable::set_hashTableSize(int size)
 {
+    delete[] (this->prvt_data); 
     this->prvt_size = size;
     // an struct array should be created here but  using heap memory
-    hash_data *storage_array = new hash_data[size];
+    hash_data *storage_array = new hash_data[this->prvt_size];
     this->prvt_data = storage_array; // addr of the struct array which is created above
-    for(int i = 0; i<size; i++)
+    for(int i = 0; i<this->prvt_size; i++)
     {
         this->prvt_data[i].key = -1;
     }

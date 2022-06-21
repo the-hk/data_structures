@@ -18,6 +18,6 @@ class ds_hashTable
     
     private:
     int prvt_size  = 100;
-    hash_data *prvt_data = NULL;
+    hash_data *prvt_data = nullptr;
     int hashFunction(hash_data *data);
 };

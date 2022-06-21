@@ -51,5 +51,4 @@ int main()
     std::cout << " 2:" <<hk.get(&myHashData2)<<std::endl;
     std::cout << " 3:" <<hk.get(&myHashData3)<<std::endl;
     std::cout << " 4:" <<hk.get(&myHashData4)<<std::endl;    
-    
 }

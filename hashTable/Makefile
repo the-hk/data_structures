@@ -1,4 +1,3 @@
-
 CC = g++
 CFLAG = -Wall -g
 TARGET = hashTable
@@ -21,3 +20,8 @@ run:
 
 open_gdb:
 	gdb ./${RESULT}
+
+open_valgrind:
+	valgrind --leak-check=full -v ./${RESULT}
+
+remake: purge all run
