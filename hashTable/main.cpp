@@ -35,4 +35,21 @@ int main()
     std::cout << " 2:" <<hk.get(&myHashData2)<<std::endl;
     std::cout << " 3:" <<hk.get(&myHashData3)<<std::endl;
     std::cout << " 4:" <<hk.get(&myHashData4)<<std::endl;
+    
+    hk.remove(&myHashData4);
+
+    std::cout << " 0:" <<hk.get(&myHashData)<<std::endl;
+    std::cout << " 1:" <<hk.get(&myHashData1)<<std::endl;
+    std::cout << " 2:" <<hk.get(&myHashData2)<<std::endl;
+    std::cout << " 3:" <<hk.get(&myHashData3)<<std::endl;
+    std::cout << " 4:" <<hk.get(&myHashData4)<<std::endl;    
+
+    hk.remove(&myHashData2);
+
+    std::cout << " 0:" <<hk.get(&myHashData)<<std::endl;
+    std::cout << " 1:" <<hk.get(&myHashData1)<<std::endl;
+    std::cout << " 2:" <<hk.get(&myHashData2)<<std::endl;
+    std::cout << " 3:" <<hk.get(&myHashData3)<<std::endl;
+    std::cout << " 4:" <<hk.get(&myHashData4)<<std::endl;    
+    
 }
