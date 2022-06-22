@@ -15,7 +15,7 @@ int main()
     hk.remove_member(1);
     hk.remove_member(5);
     hk.remove_member(7);
-    hk.print_list();
+    hk.print_list();  
     
     
 

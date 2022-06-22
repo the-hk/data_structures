@@ -1,6 +1,5 @@
 #include "linkedlist.h"
 
-
 linkedlist::linkedlist()
 {
     std::cout<<"hello linked list object was created."<<std::endl;
@@ -8,7 +7,6 @@ linkedlist::linkedlist()
     this->root->val = 123;
     this->root->next = nullptr;
 }
-
 
 linkedlist::~linkedlist()
 {
@@ -23,7 +21,8 @@ linkedlist::~linkedlist()
         iter=iter->next;
         delete removed;
     }
-}
+    delete iter;
+}   
 
 int linkedlist::add_member(linkedlistStc *new_val)
 {
@@ -33,7 +32,7 @@ int linkedlist::add_member(linkedlistStc *new_val)
     {
         iter=iter->next;
     }
-    iter->next = new linkedlistStc;
+    iter->next = new linkedlistStc();
     iter->next->val = new_val->val;
     iter->next->next = nullptr;
     this->size_of_linkedList++;
