@@ -46,7 +46,7 @@ int queue::get_queue_size()
 
 void queue::print_queue()
 {
-    for(int i = 0; i<queue_size; i++)
+    for(int i = this->queue_pop_counter; i<this->queueCounter; i++)
     {
         std::cout<<this->queueStackPointer[i].val<<std::endl;
     }
