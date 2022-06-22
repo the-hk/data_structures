@@ -22,6 +22,6 @@ open_gdb:
 	gdb ./${RESULT}
 
 open_valgrind:
-	valgrind --leak-check=full -v ./${RESULT}
+	valgrind --leak-check=full --track-origins=yes -v ./${RESULT}
 
 remake: purge all run
