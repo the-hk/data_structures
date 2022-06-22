@@ -15,7 +15,7 @@ int main()
     for(int i = 0; i<20; i++)
     {
         stc.pop(&(coming_data[i]));
-        std::cout<<"coming data :"<<20 - i<<"="<<coming_data[i].val<<std::endl;
+        std::cout<<"coming data :"<<19 - i<<"="<<coming_data[i].val<<std::endl;
         stc.printds_stack();
     }
 

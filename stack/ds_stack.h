@@ -18,7 +18,7 @@ class ds_stack{
     public:
     ds_stack();
     ~ds_stack();
-    ds_stackStruct pop(ds_stackStruct *data);
+    int pop(ds_stackStruct *data);
     int push(ds_stackStruct *data);
     int get_ds_stackSize();
     void printds_stack();
