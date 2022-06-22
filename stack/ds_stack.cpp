@@ -13,9 +13,9 @@ ds_stack::~ds_stack()
 
 ds_stackStruct ds_stack::pop(ds_stackStruct *data)
 {
-    *data = this->ds_stackPointer[ds_stackCounter];    
     this->ds_stackCounter--;
-    if( (this->ds_stackCounter + 2) < (this->ds_stack_size) )
+    *data = this->ds_stackPointer[ds_stackCounter];    
+    if( (this->ds_stackCounter + 4) < (this->ds_stack_size) )
     {
         /* decrease the ds_stack size*/
         this->resizeds_stack(decrease);
