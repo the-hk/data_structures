@@ -17,8 +17,8 @@ class queue
     public:
     queue();
     ~queue();
-    int pop(queueStc *data);
-    int push(queueStc *data);
+    int dequeue(queueStc *data);
+    int enqueue(queueStc *data);
     int get_queue_size();
     void print_queue();
     

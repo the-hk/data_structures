@@ -12,7 +12,7 @@ queue::~queue()
     delete[] queueStackPointer;
 }
 
-int queue::pop(queueStc *data)
+int queue::dequeue(queueStc *data)
 {
     this->queueCounter--;
     *data = this->queueStackPointer[queue_pop_counter];    
@@ -26,7 +26,7 @@ int queue::pop(queueStc *data)
 
 }
 
-int queue::push(queueStc *data)
+int queue::enqueue(queueStc *data)
 {
     this->queueStackPointer[queueCounter] = *data;
     this->queueCounter++;
@@ -46,12 +46,13 @@ int queue::get_queue_size()
 
 void queue::print_queue()
 {
-    for(int i = this->queue_pop_counter; i<this->queueCounter; i++)
+    for(int i = this->queue_pop_counter; i<this->queue_size; i++)
     {
         std::cout<<this->queueStackPointer[i].val<<std::endl;
     }
-    std::cout<<"stack_counter = "<<this->queueCounter<<std::endl;
-    std::cout<<"stack_size = "<<this->queue_size<<std::endl;
+    std::cout<<"pop_counter = "<<this->queue_pop_counter<<std::endl;
+    std::cout<<"queue_counter = "<<this->queueCounter<<std::endl;
+    std::cout<<"queue_size = "<<this->queue_size<<std::endl;
 }
 
 int queue::resize_queue(int queue_dir)
