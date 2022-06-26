@@ -1,4 +1,5 @@
 #include <iostream>
+#include <random>
 
 struct bstStc
 {
@@ -20,5 +21,6 @@ class bstCls
     private:
     bstStc *bst_root = nullptr;
     bstStc *bst_iter = nullptr;
+    int get_treeSize();
 
 };
