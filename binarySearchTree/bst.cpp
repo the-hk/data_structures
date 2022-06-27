@@ -3,6 +3,7 @@
 bstCls::bstCls()
 {
     std::cout<<"bstCls was created"<<std::endl;
+    this->bst_root = nullptr;
 }
 
 bstCls::~bstCls()
@@ -16,6 +17,8 @@ int bstCls::add_tree(int newValue)
     {
         /* create a root node for tree */
         this->bst_root = new bstStc;
+        this->bst_root->left = nullptr;
+        this->bst_root->right = nullptr;
         this->bst_root->val = newValue;
         return 0;
     }
@@ -29,7 +32,7 @@ int bstCls::add_tree(int newValue)
             if(iter->right == nullptr)
             {
                 iter->right = new bstStc;
-                iter->val = newValue;
+                iter->right->val = newValue;
                 return 1; 
             }
             else
@@ -44,15 +47,13 @@ int bstCls::add_tree(int newValue)
             if(iter->left == nullptr)
             {
                 iter->left = new bstStc;
-                iter->val = newValue;
+                iter->left->val = newValue;
                 return 1 ;
             }
             else
             {
                 iter = iter->left;
             }
-            
-
         }
     }
     return -1;
@@ -63,16 +64,34 @@ int bstCls::remove_tree()
     return 1;
 }
 
-int bstCls::print_tree()
+int bstCls::print_tree_LNR()
 {
-    bstStc *iter = this->bst_root;
-    int isTreeCompleted = 0;
-    int left_counter = 0;
-    int right_counter = 0;
+    print_tree_rec(this->bst_root);
+}
 
-    while(isTreeCompleted == 0)
+void bstCls::print_tree_right(bstStc *node)
+{
+
+}
+
+int bstCls::print_tree_rec(bstStc *node)
+{
+    if( (node->left == nullptr) && (node->right == nullptr) )
     {
-        std::cout<<iter->val<<std::endl;
+        std::cout<<node->val<<std::endl; 
+        return 1;
+    }
+    
+    if(node->left != nullptr)
+    {
+        print_tree_rec(node->left); 
+        std::cout<<node->val<<std::endl; 
+    }
+    
+    if(node->right != nullptr)
+    {
+        print_tree_rec(node->right); 
+        std::cout<<node->val<<std::endl; 
     }
 }
 
@@ -88,4 +107,3 @@ int bstCls::get_treeSize()
     
     return tree_size;
 }
-
