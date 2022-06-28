@@ -23,6 +23,4 @@ class bstCls
     bstStc *bst_iter = nullptr;
     int get_treeSize();
     int print_tree_rec(bstStc *node);
-    void print_tree_right(bstStc *node);
-
 };

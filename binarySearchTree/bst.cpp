@@ -69,30 +69,19 @@ int bstCls::print_tree_LNR()
     print_tree_rec(this->bst_root);
 }
 
-void bstCls::print_tree_right(bstStc *node)
-{
-
-}
-
 int bstCls::print_tree_rec(bstStc *node)
-{
-    if( (node->left == nullptr) && (node->right == nullptr) )
-    {
-        std::cout<<node->val<<std::endl; 
-        return 1;
-    }
-    
+{     
+    int local_base_flag = 0;
     if(node->left != nullptr)
     {
-        print_tree_rec(node->left); 
-        std::cout<<node->val<<std::endl; 
+        this->print_tree_rec(node->left);
     }
-    
+    std::cout<<node->val<<std::endl;
     if(node->right != nullptr)
     {
-        print_tree_rec(node->right); 
-        std::cout<<node->val<<std::endl; 
+        this->print_tree_rec(node->right);
     }
+    return 1;
 }
 
 int bstCls::search_tree()
