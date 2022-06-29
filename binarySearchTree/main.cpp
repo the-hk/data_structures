@@ -13,5 +13,10 @@ int main()
     
 
     hk.print_tree_LNR();
+    std::cout<<"-------------"<<std::endl;
+    hk.print_tree_RNL();
+
+    std::cout<<"search result : "<<hk.search_tree(50)<<std::endl;
+    std::cout<<"search result : "<<hk.search_tree(17)<<std::endl;
     
 }

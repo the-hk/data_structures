@@ -13,6 +13,7 @@ bstCls::~bstCls()
 
 int bstCls::add_tree(int newValue)
 {
+    this->tree_size++;
     if(this->bst_root == nullptr)
     {
         /* create a root node for tree */
@@ -61,38 +62,89 @@ int bstCls::add_tree(int newValue)
 
 int bstCls::remove_tree()
 {
+    this->tree_size--;
+
+
     return 1;
 }
 
 int bstCls::print_tree_LNR()
 {
-    print_tree_rec(this->bst_root);
+    print_tree_rec_LNR(this->bst_root);
 }
 
-int bstCls::print_tree_rec(bstStc *node)
+int bstCls::print_tree_RNL()
+{
+    print_tree_rec_RNL(this->bst_root);
+}
+
+int bstCls::print_tree_rec_LNR(bstStc *node)
 {     
-    int local_base_flag = 0;
     if(node->left != nullptr)
     {
-        this->print_tree_rec(node->left);
+        this->print_tree_rec_LNR(node->left);
     }
     std::cout<<node->val<<std::endl;
     if(node->right != nullptr)
     {
-        this->print_tree_rec(node->right);
+        this->print_tree_rec_LNR(node->right);
     }
     return 1;
 }
 
-int bstCls::search_tree()
-{
+int bstCls::print_tree_rec_RNL(bstStc *node)
+{     
+    if(node->right != nullptr)
+    {
+        this->print_tree_rec_RNL(node->right);
+    }
+    std::cout<<node->val<<std::endl;
+    if(node->left != nullptr)
+    {
+        this->print_tree_rec_RNL(node->left);
+    }
     return 1;
 }
 
-int bstCls::get_treeSize()
+int bstCls::search_tree(int searchVal)
 {
-    int tree_size = 0;
+    bstStc *iter = this->bst_root;
+    int right_node_closed = 0;
+    int left_node_closed = 0;
 
-    
+    while(1)
+    {
+        if((iter->left == nullptr) && (iter->right == nullptr))
+        {
+            break;
+        } 
+        if(searchVal > iter->val)
+        {
+            /* right node */
+            if(iter->right != nullptr)
+            {
+                iter = iter->right;
+            }  
+        }
+        else if(searchVal < iter->val)
+        {
+            /* left node */
+            if(iter->left != nullptr)
+            {
+                iter = iter->left;
+            }  
+        }
+        if(iter->val == searchVal)
+        {
+            return 1;
+        }
+    }
+
+
+    return -1;
+}
+
+int bstCls::get_treeSize()
+{    
     return tree_size;
 }
