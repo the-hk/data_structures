@@ -23,7 +23,6 @@ int bstCls::add_tree(int newValue)
         this->bst_root->val = newValue;
         return 0;
     }
-
     bstStc *iter = this->bst_root;
     while(1)
     {
@@ -60,12 +59,64 @@ int bstCls::add_tree(int newValue)
     return -1;
 }
 
-int bstCls::remove_tree()
+int bstCls::remove_tree(int removed_val)
 {
     this->tree_size--;
-
-
+    tree_delete_Node(this->bst_root, removed_val);
     return 1;
+}
+
+bstStc* bstCls::tree_delete_Node(bstStc* root, int key)
+{
+    if (root == nullptr)
+    {
+        return root;
+    }
+        
+ 
+    if (key < root->val)
+    {
+        root->left = tree_delete_Node(root->left, key);
+    }
+    else if (key > root->val)
+    {
+        root->right = tree_delete_Node(root->right, key);
+    }
+    else 
+    {
+        if (root->left == nullptr && root->right == nullptr)
+        {
+            return nullptr;
+        }
+        else if(root->left == nullptr) 
+        {
+            bstStc* temp = root->right;
+            free(root);
+            return temp;
+        }
+        else if(root->right == nullptr) 
+        {
+            bstStc* temp = root->left;
+            free(root);
+            return temp;
+        }
+        bstStc* temp = tree_min_val(root->right);
+        root->val = temp->val;
+        root->right = tree_delete_Node(root->right, temp->val);
+    }
+    return root;
+}
+
+bstStc* bstCls::tree_min_val(bstStc* node)
+{
+    bstStc* current = node;
+ 
+    while (current && current->left != nullptr)
+    {
+        current = current->left;
+    }
+ 
+    return current;
 }
 
 int bstCls::print_tree_LNR()
@@ -109,9 +160,6 @@ int bstCls::print_tree_rec_RNL(bstStc *node)
 int bstCls::search_tree(int searchVal)
 {
     bstStc *iter = this->bst_root;
-    int right_node_closed = 0;
-    int left_node_closed = 0;
-
     while(1)
     {
         if((iter->left == nullptr) && (iter->right == nullptr))
@@ -139,8 +187,6 @@ int bstCls::search_tree(int searchVal)
             return 1;
         }
     }
-
-
     return -1;
 }
 

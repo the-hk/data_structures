@@ -18,5 +18,10 @@ int main()
 
     std::cout<<"search result : "<<hk.search_tree(50)<<std::endl;
     std::cout<<"search result : "<<hk.search_tree(17)<<std::endl;
+
+    std::cout<<"-after removing-"<<std::endl;
+    hk.remove_tree(15);
+    hk.print_tree_LNR();
+    std::cout<<"-------------"<<std::endl;
     
 }

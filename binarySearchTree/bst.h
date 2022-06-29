@@ -14,7 +14,7 @@ class bstCls
     bstCls();
     ~bstCls();
     int add_tree(int newValue);
-    int remove_tree();
+    int remove_tree(int removed_val);    
     int print_tree_LNR();
     int print_tree_RNL();
     int search_tree(int searchVal);
@@ -25,5 +25,7 @@ class bstCls
     int tree_size = 0;
     int print_tree_rec_LNR(bstStc *node);
     int print_tree_rec_RNL(bstStc *node);
+    bstStc* tree_min_val(bstStc* node);
+    bstStc* tree_delete_Node(bstStc* root, int key);
 
 };
