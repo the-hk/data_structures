@@ -11,5 +11,5 @@ definition of the binary tree was shown in the below.
 (right node) > (main node)
 
 ## Valgrind Results
-![This is an image](valgrindResult.png)
+![This is an image](valgrind_result.png)
 #### Hamza Karakus
