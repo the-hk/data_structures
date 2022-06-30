@@ -3,12 +3,15 @@
 bstCls::bstCls()
 {
     std::cout<<"bstCls was created"<<std::endl;
-    this->bst_root = nullptr;
+    //this->bst_root = new bstStc;
+    //this->bst_root->left = nullptr;
+    //this->bst_root->right = nullptr;
 }
 
 bstCls::~bstCls()
 {
     std::cout<<"bstCls was destroyed"<<std::endl;
+    clear_memory(this->bst_root);
 }
 
 int bstCls::add_tree(int newValue)
@@ -73,7 +76,6 @@ bstStc* bstCls::tree_delete_Node(bstStc* root, int key)
         return root;
     }
         
- 
     if (key < root->val)
     {
         root->left = tree_delete_Node(root->left, key);
@@ -91,7 +93,7 @@ bstStc* bstCls::tree_delete_Node(bstStc* root, int key)
         else if(root->left == nullptr) 
         {
             bstStc* temp = root->right;
-            free(root);
+            delete root;
             return temp;
         }
         else if(root->right == nullptr) 
@@ -122,11 +124,13 @@ bstStc* bstCls::tree_min_val(bstStc* node)
 int bstCls::print_tree_LNR()
 {
     print_tree_rec_LNR(this->bst_root);
+    return 1;
 }
 
 int bstCls::print_tree_RNL()
 {
     print_tree_rec_RNL(this->bst_root);
+    return 1;
 }
 
 int bstCls::print_tree_rec_LNR(bstStc *node)
@@ -193,4 +197,17 @@ int bstCls::search_tree(int searchVal)
 int bstCls::get_treeSize()
 {    
     return tree_size;
+}
+
+void bstCls::clear_memory(bstStc *node )
+{
+    if(node->left != nullptr)
+    {
+        clear_memory(node->left);
+    }
+    if(node->right != nullptr)
+    {
+        clear_memory(node->right);
+    }
+    delete node;
 }

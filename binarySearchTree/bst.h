@@ -4,8 +4,8 @@
 struct bstStc
 {
     int val;
-    bstStc *left;
-    bstStc *right;
+    bstStc *left = nullptr;
+    bstStc *right = nullptr;
 };
 
 class bstCls
@@ -27,5 +27,6 @@ class bstCls
     int print_tree_rec_RNL(bstStc *node);
     bstStc* tree_min_val(bstStc* node);
     bstStc* tree_delete_Node(bstStc* root, int key);
+    void clear_memory(bstStc *node);
 
 };
